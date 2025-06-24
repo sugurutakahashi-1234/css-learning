@@ -8,11 +8,7 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
   return (
     <article className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
-      <Link
-        to="/posts/$postId"
-        params={{ postId: post.id }}
-        className="block"
-      >
+      <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
         <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
           {post.title}
         </h2>
