@@ -37,44 +37,11 @@ pnpm run generate # すべてのパッケージのコードを生成
 pnpm run mock # モックサーバーの起動
 pnpm run dev # 開発サーバーの起動
 
-# 立ち上がったサーバーにアクセス
-# http://localhost:5177 - React Router v7 Code-Based Routing
-# http://localhost:5178 - React Router v7 File-Based Routing
-# http://localhost:5179 - TanStack Router Code-Based Routing
-# http://localhost:5160 - TanStack Router File-Based Routing
+# TODO
 ```
-
-## プロジェクト構成
-
-### パッケージ一覧（アルファベット順）
-| パッケージ名                | フレームワーク  | ルーティング方式   | ポート |
-| --------------------------- | --------------- | ------------------ | ------ |
-| `stack-react-router-cbr`    | React Router v7 | Code-Based Routing | 5177   |
-| `stack-react-router-fbr`    | React Router v7 | File-Based Routing | 5178   |
-| `stack-tanstack-router-cbr` | TanStack Router | Code-Based Routing | 5179   |
-| `stack-tanstack-router-fbr` | TanStack Router | File-Based Routing | 5160   |
-
-### インストール
-```bash
-# 依存関係のインストール
-pnpm install
-```
-
-### 開発サーバーの起動
-```bash
-# すべてのパッケージを同時に起動
-pnpm run dev
-
-# 個別に起動する場合
-pnpm run dev --filter @router-learning/stack-react-router-cbr
-pnpm run dev --filter @router-learning/stack-react-router-fbr
-pnpm run dev --filter @router-learning/stack-tanstack-router-cbr
-pnpm run dev --filter @router-learning/stack-tanstack-router-fbr
-```
-
 ## よく使うコマンド
-
 ```bash
+pnpm install # 依存関係のインストール
 pnpm run dev # すべてのパッケージの開発サーバーを起動
 pnpm run generate # すべてのパッケージのコードを生成
 pnpm run build      # すべてのパッケージをビルド
