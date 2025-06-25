@@ -19,6 +19,7 @@ export function PostForm({
 }: PostFormProps): React.ReactElement {
   const titleId = useId();
   const contentId = useId();
+  const publishedId = useId();
   const [formData, setFormData] = useState<components["schemas"]["CreatePost"]>(
     {
       title: "",
@@ -82,7 +83,7 @@ export function PostForm({
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
-              id="published"
+              id={publishedId}
               checked={formData.published}
               onChange={(e) =>
                 setFormData({ ...formData, published: e.target.checked })
@@ -90,7 +91,7 @@ export function PostForm({
               className="h-4 w-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900 dark:border-zinc-700 dark:text-zinc-50 dark:focus:ring-zinc-50"
             />
             <Label
-              htmlFor="published"
+              htmlFor={publishedId}
               className="text-sm font-normal cursor-pointer"
             >
               公開する
