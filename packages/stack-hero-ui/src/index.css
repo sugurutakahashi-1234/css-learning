@@ -1,8 +1,7 @@
 @import "tailwindcss";
-@plugin './hero.ts';
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
-@config "../tailwind.config.ts";
+@config "../tailwind.config.js";
 
 /* グローバルスタイル */
 @layer base {
@@ -34,7 +33,7 @@
   /* Firefox用スクロールバー */
   * {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.default.400') theme('colors.default.100');
+    scrollbar-color: #a1a1aa #f4f4f5;
   }
 }
 
@@ -106,7 +105,8 @@
 
   /* パルス（強調） */
   @keyframes pulse-scale {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
     }
     50% {
@@ -152,7 +152,8 @@
 
   /* バウンス */
   @keyframes bounce-soft {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {

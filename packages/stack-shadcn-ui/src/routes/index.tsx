@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FileTextIcon, PlusIcon } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
 import { PostCard } from "../components/PostCard";
+import { PostCardSkeleton } from "../components/PostCardSkeleton";
 import { usePosts } from "../user-posts";
 
 export const Route = createFileRoute("/")({
@@ -15,8 +15,25 @@ function HomePage(): React.ReactElement {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-16">
-        <Spinner size="lg" />
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+            投稿一覧
+          </h1>
+          <Button asChild variant="outline">
+            <Link to="/posts/new">
+              <PlusIcon className="mr-2 h-4 w-4" />
+              新規投稿
+            </Link>
+          </Button>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[...Array(6)].map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: スケルトンは静的要素のため問題なし
+            <PostCardSkeleton key={i} />
+          ))}
+        </div>
       </div>
     );
   }

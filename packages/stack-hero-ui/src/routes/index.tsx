@@ -32,12 +32,7 @@ function HomePage() {
     return (
       <div className="text-center py-12">
         <p className="text-default-500 mb-4">投稿がありません</p>
-        <Button
-          as={Link}
-          to="/posts/new"
-          color="primary"
-          variant="solid"
-        >
+        <Button as={Link} to="/posts/new" color="primary" variant="solid">
           最初の投稿を作成
         </Button>
       </div>
@@ -50,9 +45,7 @@ function HomePage() {
         <h1 className="text-4xl font-bold mb-2 gradient-text animate-gradient">
           投稿一覧
         </h1>
-        <p className="text-default-600">
-          すべての投稿を表示しています
-        </p>
+        <p className="text-default-600">すべての投稿を表示しています</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post, index) => (

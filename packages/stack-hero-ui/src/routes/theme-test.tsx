@@ -49,9 +49,24 @@ function ThemeTestPage() {
   const [sliderValue, setSliderValue] = useState(50);
   const [selectedTab, setSelectedTab] = useState("photos");
 
-  const colors = ["default", "primary", "secondary", "success", "warning", "danger"] as const;
+  const colors = [
+    "default",
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "danger",
+  ] as const;
   const sizes = ["sm", "md", "lg"] as const;
-  const variants = ["solid", "bordered", "light", "flat", "faded", "shadow", "ghost"] as const;
+  const variants = [
+    "solid",
+    "bordered",
+    "light",
+    "flat",
+    "faded",
+    "shadow",
+    "ghost",
+  ] as const;
 
   return (
     <div className="space-y-12">
@@ -215,17 +230,28 @@ function ThemeTestPage() {
             <Switch isSelected={switchValue} onValueChange={setSwitchValue}>
               通知を有効にする
             </Switch>
-            <Switch isSelected={switchValue} onValueChange={setSwitchValue} size="sm">
+            <Switch
+              isSelected={switchValue}
+              onValueChange={setSwitchValue}
+              size="sm"
+            >
               小サイズ
             </Switch>
-            <Switch isSelected={switchValue} onValueChange={setSwitchValue} size="lg">
+            <Switch
+              isSelected={switchValue}
+              onValueChange={setSwitchValue}
+              size="lg"
+            >
               大サイズ
             </Switch>
           </div>
 
           <div className="space-y-4">
             <h3 className="font-medium">チェックボックス</h3>
-            <CheckboxGroup value={checkboxValues} onValueChange={setCheckboxValues}>
+            <CheckboxGroup
+              value={checkboxValues}
+              onValueChange={setCheckboxValues}
+            >
               <Checkbox value="1">オプション 1</Checkbox>
               <Checkbox value="2">オプション 2</Checkbox>
               <Checkbox value="3">オプション 3</Checkbox>
@@ -277,23 +303,17 @@ function ThemeTestPage() {
         >
           <Tab key="photos" title="写真">
             <Card>
-              <CardBody>
-                写真コンテンツがここに表示されます
-              </CardBody>
+              <CardBody>写真コンテンツがここに表示されます</CardBody>
             </Card>
           </Tab>
           <Tab key="music" title="音楽">
             <Card>
-              <CardBody>
-                音楽コンテンツがここに表示されます
-              </CardBody>
+              <CardBody>音楽コンテンツがここに表示されます</CardBody>
             </Card>
           </Tab>
           <Tab key="videos" title="動画">
             <Card>
-              <CardBody>
-                動画コンテンツがここに表示されます
-              </CardBody>
+              <CardBody>動画コンテンツがここに表示されます</CardBody>
             </Card>
           </Tab>
         </Tabs>
@@ -310,8 +330,14 @@ function ThemeTestPage() {
             <div className="flex gap-4 items-center">
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
               <Avatar name="田中 太郎" />
-              <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" size="sm" />
-              <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" size="lg" />
+              <Avatar
+                src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+                size="sm"
+              />
+              <Avatar
+                src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+                size="lg"
+              />
               <AvatarGroup>
                 <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
                 <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" />

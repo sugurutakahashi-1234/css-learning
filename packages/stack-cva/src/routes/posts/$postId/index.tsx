@@ -55,7 +55,9 @@ function PostDetailPage() {
       <div className="mb-6">
         <Link
           to="/"
-          className={link({ className: "text-sm text-gray-500 hover:text-gray-700" })}
+          className={link({
+            className: "text-sm text-gray-500 hover:text-gray-700",
+          })}
         >
           ← 一覧に戻る
         </Link>
@@ -154,7 +156,7 @@ function PostDetailPage() {
                   className={button({
                     variant: "danger",
                     size: "sm",
-                    className: `sm:ml-3 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`
+                    className: `sm:ml-3 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`,
                   })}
                 >
                   {deletePost.isPending ? "削除中..." : "削除"}
@@ -166,7 +168,7 @@ function PostDetailPage() {
                   className={button({
                     variant: "secondary",
                     size: "sm",
-                    className: `mt-3 sm:mt-0 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`
+                    className: `mt-3 sm:mt-0 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`,
                   })}
                 >
                   キャンセル

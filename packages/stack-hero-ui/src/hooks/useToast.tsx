@@ -32,9 +32,9 @@ export function ToastProvider({ children }: ToastProviderProps) {
   const showToast = (message: string, type: Toast["type"] = "info") => {
     const id = Date.now().toString();
     const newToast: Toast = { id, message, type };
-    
+
     setToasts((prev) => [...prev, newToast]);
-    
+
     // 3秒後に自動で削除
     setTimeout(() => {
       setToasts((prev) => prev.filter((toast) => toast.id !== id));
@@ -53,7 +53,6 @@ export function ToastProvider({ children }: ToastProviderProps) {
         return "bg-danger-50 text-danger-700 border-danger-200";
       case "warning":
         return "bg-warning-50 text-warning-700 border-warning-200";
-      case "info":
       default:
         return "bg-primary-50 text-primary-700 border-primary-200";
     }
@@ -67,7 +66,6 @@ export function ToastProvider({ children }: ToastProviderProps) {
         return "❌";
       case "warning":
         return "⚠️";
-      case "info":
       default:
         return "ℹ️";
     }
@@ -87,11 +85,14 @@ export function ToastProvider({ children }: ToastProviderProps) {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <CardBody className="flex-row items-center gap-3 py-3">
-                <span className="text-2xl animate-bounce-soft">{getIcon(toast.type)}</span>
+                <span className="text-2xl animate-bounce-soft">
+                  {getIcon(toast.type)}
+                </span>
                 <div className="flex-1">
                   <span className="font-medium">{toast.message}</span>
                 </div>
                 <button
+                  type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     removeToast(toast.id);
@@ -105,7 +106,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
             </Card>
           ))}
         </div>,
-        document.body
+        document.body,
       )}
     </ToastContext.Provider>
   );

@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Spinner } from "@/components/ui/spinner";
+import { Skeleton } from "@/components/ui/skeleton";
 import { PostForm } from "../../../components/PostForm";
 import type { components } from "../../../generated/api";
 import { usePost, useUpdatePost } from "../../../user-posts";
@@ -28,16 +29,36 @@ function PostEditPage(): React.ReactElement {
         params: { path: { id: postId } },
         body: updateData,
       });
+      toast.success("投稿を更新しました");
       navigate({ to: "/posts/$postId", params: { postId } });
     } catch (error) {
       console.error("更新エラー:", error);
+      toast.error("投稿の更新に失敗しました");
     }
   };
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-16">
-        <Spinner size="lg" />
+      <div className="space-y-6">
+        <Skeleton className="h-9 w-32" />
+        <div className="space-y-4">
+          <div>
+            <Skeleton className="h-4 w-16 mb-2" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+          <div>
+            <Skeleton className="h-4 w-16 mb-2" />
+            <Skeleton className="h-32 w-full" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-5 w-5" />
+            <Skeleton className="h-4 w-32" />
+          </div>
+          <div className="flex gap-2">
+            <Skeleton className="h-10 w-24" />
+            <Skeleton className="h-10 w-32" />
+          </div>
+        </div>
       </div>
     );
   }

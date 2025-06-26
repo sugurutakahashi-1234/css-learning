@@ -30,7 +30,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       setTheme(savedTheme);
     } else {
       // システムの設定を確認
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
       setTheme(prefersDark ? "dark" : "light");
     }
   }, []);
@@ -43,20 +45,18 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     } else {
       root.classList.remove("dark");
     }
-    
+
     // ローカルストレージに保存
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === "light" ? "dark" : "light");
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <HeroUIProvider>
-        {children}
-      </HeroUIProvider>
+      <HeroUIProvider>{children}</HeroUIProvider>
     </ThemeContext.Provider>
   );
 }

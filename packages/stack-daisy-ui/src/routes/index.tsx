@@ -29,10 +29,7 @@ function HomePage() {
     return (
       <div className="text-center py-12">
         <p className="text-base-content/60">投稿がありません</p>
-        <Link
-          to="/posts/new"
-          className="mt-4 btn btn-primary"
-        >
+        <Link to="/posts/new" className="mt-4 btn btn-primary">
           最初の投稿を作成
         </Link>
       </div>

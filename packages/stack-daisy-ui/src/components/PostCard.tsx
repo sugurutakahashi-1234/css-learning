@@ -20,9 +20,7 @@ export function PostCard({ post }: PostCardProps) {
         <div className="flex items-center justify-between text-sm">
           <span
             className={`badge badge-sm ${
-              post.published
-                ? "badge-success badge-outline"
-                : "badge-ghost"
+              post.published ? "badge-success badge-outline" : "badge-ghost"
             }`}
           >
             {post.published ? "公開" : "下書き"}

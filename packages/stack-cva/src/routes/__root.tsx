@@ -7,7 +7,9 @@ const RootComponent = () => (
     <div className="min-h-screen bg-gray-50">
       {/* ヘッダー */}
       <header className={header({ className: "bg-teal-700" })}>
-        <div className={container({ size: "sm", className: "sm:px-6 lg:px-8" })}>
+        <div
+          className={container({ size: "sm", className: "sm:px-6 lg:px-8" })}
+        >
           <div className="flex h-16 items-center justify-between">
             <Link
               to="/"
@@ -32,7 +34,9 @@ const RootComponent = () => (
       </header>
 
       {/* メインコンテンツ */}
-      <main className={container({ size: "sm", className: "sm:px-6 lg:px-8 py-8" })}>
+      <main
+        className={container({ size: "sm", className: "sm:px-6 lg:px-8 py-8" })}
+      >
         <Outlet />
       </main>
     </div>

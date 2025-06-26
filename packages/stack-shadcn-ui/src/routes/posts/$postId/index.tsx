@@ -4,13 +4,33 @@ import {
   ArrowLeftIcon,
   CalendarIcon,
   EditIcon,
+  MoreVerticalIcon,
   TrashIcon,
 } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import { useDeletePost, usePost } from "../../../user-posts";
 
@@ -28,17 +48,45 @@ function PostDetailPage(): React.ReactElement {
   const handleDelete = async (): Promise<void> => {
     try {
       await deletePost.mutateAsync({ params: { path: { id: postId } } });
+      toast.success("投稿を削除しました");
       navigate({ to: "/" });
     } catch (error) {
       console.error("削除エラー:", error);
+      toast.error("削除に失敗しました");
     }
   };
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-16">
-        <Spinner size="lg" />
-      </div>
+      <Card>
+        <CardHeader>
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <Skeleton className="h-4 w-20 mb-2" />
+              <Skeleton className="h-9 w-96" />
+            </div>
+            <div className="flex gap-2">
+              <Skeleton className="h-9 w-20" />
+              <Skeleton className="h-9 w-20" />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 text-sm">
+            <Skeleton className="h-5 w-12" />
+            <Skeleton className="h-4 w-32" />
+            <Skeleton className="h-4 w-32" />
+          </div>
+        </CardHeader>
+
+        <CardContent>
+          <div className="space-y-3">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-3/4" />
+          </div>
+        </CardContent>
+      </Card>
     );
   }
 
@@ -54,37 +102,44 @@ function PostDetailPage(): React.ReactElement {
 
   return (
     <>
-      <div className="mb-6">
-        <Button variant="ghost" size="sm" asChild>
-          <Link to="/">
-            <ArrowLeftIcon className="mr-2 h-4 w-4" />
-            一覧に戻る
-          </Link>
-        </Button>
-      </div>
-
       <Card>
-        <CardHeader className="space-y-4">
+        <CardHeader>
           <div className="flex items-start justify-between">
-            <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              {post.title}
-            </h1>
-            <div className="flex gap-2">
-              <Button size="sm" asChild>
-                <Link to="/posts/$postId/edit" params={{ postId }}>
-                  <EditIcon className="mr-2 h-4 w-4" />
-                  編集
-                </Link>
-              </Button>
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => setShowDeleteConfirm(true)}
+            <div className="space-y-1">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
               >
-                <TrashIcon className="mr-2 h-4 w-4" />
-                削除
-              </Button>
+                <ArrowLeftIcon className="h-4 w-4" />
+                一覧に戻る
+              </Link>
+              <h1 className="text-3xl font-bold tracking-tight">
+                {post.title}
+              </h1>
             </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  <MoreVerticalIcon className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <Link to="/posts/$postId/edit" params={{ postId }}>
+                    <EditIcon className="mr-2 h-4 w-4" />
+                    編集
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => setShowDeleteConfirm(true)}
+                  className="text-red-600 focus:text-red-600"
+                >
+                  <TrashIcon className="mr-2 h-4 w-4" />
+                  削除
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
@@ -125,53 +180,38 @@ function PostDetailPage(): React.ReactElement {
       </Card>
 
       {/* 削除確認ダイアログ */}
-      {showDeleteConfirm && (
-        <>
-          <button
-            type="button"
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity z-40"
-            onClick={() => setShowDeleteConfirm(false)}
-          />
-
-          <div className="fixed inset-0 z-50 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <Card className="relative w-full max-w-lg">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
-                      <AlertTriangleIcon className="h-6 w-6 text-red-600 dark:text-red-400" />
-                    </div>
-                    <div className="text-left">
-                      <h3 className="text-lg font-semibold">投稿を削除</h3>
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                        この投稿を削除してもよろしいですか？この操作は取り消せません。
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex gap-3 justify-end">
-                    <Button
-                      variant="outline"
-                      onClick={() => setShowDeleteConfirm(false)}
-                      disabled={deletePost.isPending}
-                    >
-                      キャンセル
-                    </Button>
-                    <Button
-                      variant="destructive"
-                      onClick={handleDelete}
-                      disabled={deletePost.isPending}
-                    >
-                      {deletePost.isPending ? "削除中..." : "削除"}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </>
-      )}
+      <AlertDialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <AlertTriangleIcon className="h-5 w-5 text-red-600" />
+              投稿を削除しますか？
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              この投稿を削除してもよろしいですか？この操作は取り消せません。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={deletePost.isPending}>
+              キャンセル
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDelete}
+              disabled={deletePost.isPending}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              {deletePost.isPending ? (
+                <>
+                  <Spinner className="mr-2" size="sm" />
+                  削除中...
+                </>
+              ) : (
+                "削除"
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }

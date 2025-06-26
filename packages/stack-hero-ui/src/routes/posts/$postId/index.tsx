@@ -1,4 +1,17 @@
-import { Button, Card, CardBody, CardHeader, Chip, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner, useDisclosure } from "@heroui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Chip,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Spinner,
+  useDisclosure,
+} from "@heroui/react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useToast } from "../../../hooks/useToast";
 import { useDeletePost, usePost } from "../../../user-posts";
@@ -59,7 +72,7 @@ function PostDetailPage() {
           >
             ← 一覧に戻る
           </Button>
-          
+
           <div className="w-full">
             <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
             <div className="flex items-center justify-between">
@@ -79,42 +92,34 @@ function PostDetailPage() {
                 </span>
               </div>
               <div className="flex gap-2">
-                <Button
-                  as={Link}
-                  to="/posts/$postId/edit"
-                  params={{ postId } as any}
-                  color="primary"
-                  size="sm"
-                >
-                  編集
-                </Button>
-                <Button
-                  onPress={onOpen}
-                  color="danger"
-                  size="sm"
-                >
+                <Link to="/posts/$postId/edit" params={{ postId }}>
+                  <Button color="primary" size="sm">
+                    編集
+                  </Button>
+                </Link>
+                <Button onPress={onOpen} color="danger" size="sm">
                   削除
                 </Button>
               </div>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardBody>
           <div className="prose prose-lg max-w-none">
-            <p className="whitespace-pre-wrap text-default-700">{post.content}</p>
+            <p className="whitespace-pre-wrap text-default-700">
+              {post.content}
+            </p>
           </div>
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-8 pt-8 border-t border-divider">
-              <h3 className="text-sm font-medium text-default-500 mb-2">タグ</h3>
+              <h3 className="text-sm font-medium text-default-500 mb-2">
+                タグ
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((postTag) => (
-                  <Chip
-                    key={postTag.tagId}
-                    color="primary"
-                    variant="flat"
-                  >
+                  <Chip key={postTag.tagId} color="primary" variant="flat">
                     {postTag.tag.name}
                   </Chip>
                 ))}
@@ -133,19 +138,21 @@ function PostDetailPage() {
                 <span className="text-danger">投稿を削除</span>
               </ModalHeader>
               <ModalBody>
-                <p>この投稿を削除してもよろしいですか？この操作は取り消せません。</p>
+                <p>
+                  この投稿を削除してもよろしいですか？この操作は取り消せません。
+                </p>
               </ModalBody>
               <ModalFooter>
-                <Button 
-                  color="default" 
-                  variant="light" 
+                <Button
+                  color="default"
+                  variant="light"
                   onPress={onClose}
                   isDisabled={deletePost.isPending}
                 >
                   キャンセル
                 </Button>
-                <Button 
-                  color="danger" 
+                <Button
+                  color="danger"
                   onPress={handleDelete}
                   isLoading={deletePost.isPending}
                   isDisabled={deletePost.isPending}

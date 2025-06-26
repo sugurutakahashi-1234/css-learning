@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { PostForm } from "../../components/PostForm";
 import type { components } from "../../generated/api";
 import { useCreatePost } from "../../user-posts";
@@ -16,9 +17,11 @@ function PostCreatePage(): React.ReactElement {
   ): Promise<void> => {
     try {
       await createPost.mutateAsync({ body: data });
+      toast.success("投稿を作成しました");
       navigate({ to: "/" });
     } catch (error) {
       console.error("作成エラー:", error);
+      toast.error("投稿の作成に失敗しました");
     }
   };
 

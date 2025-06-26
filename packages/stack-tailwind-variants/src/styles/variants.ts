@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants"
+import { tv } from "tailwind-variants";
 
 // ボタンのバリアント
 export const button = tv({
@@ -6,7 +6,8 @@ export const button = tv({
   variants: {
     variant: {
       primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-      secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500",
+      secondary:
+        "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500",
       danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
     },
     size: {
@@ -22,7 +23,7 @@ export const button = tv({
     variant: "primary",
     size: "md",
   },
-})
+});
 
 // フォーム入力のバリアント
 export const input = tv({
@@ -32,7 +33,7 @@ export const input = tv({
       true: "border-red-500 focus:border-red-500 focus:ring-red-500",
     },
   },
-})
+});
 
 // テキストエリアのバリアント
 export const textarea = tv({
@@ -42,17 +43,17 @@ export const textarea = tv({
       true: "border-red-500 focus:border-red-500 focus:ring-red-500",
     },
   },
-})
+});
 
 // チェックボックスのバリアント
 export const checkbox = tv({
   base: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500",
-})
+});
 
 // ラベルのバリアント
 export const label = tv({
   base: "block text-sm font-medium text-gray-700",
-})
+});
 
 // カードのバリアント
 export const card = tv({
@@ -62,7 +63,7 @@ export const card = tv({
       true: "transition-shadow hover:shadow-lg",
     },
   },
-})
+});
 
 // ステータスバッジのバリアント
 export const statusBadge = tv({
@@ -73,7 +74,7 @@ export const statusBadge = tv({
       draft: "bg-yellow-100 text-yellow-800",
     },
   },
-})
+});
 
 // コンテナのバリアント
 export const container = tv({
@@ -88,22 +89,22 @@ export const container = tv({
   defaultVariants: {
     size: "lg",
   },
-})
+});
 
 // ヘッダーのバリアント
 export const header = tv({
   base: "bg-white shadow-sm",
-})
+});
 
 // ページタイトルのバリアント
 export const pageTitle = tv({
   base: "text-3xl font-bold text-gray-900",
-})
+});
 
 // エラーメッセージのバリアント
 export const errorMessage = tv({
   base: "text-sm text-red-600 mt-1",
-})
+});
 
 // ローディングスピナーのバリアント
 export const loadingSpinner = tv({
@@ -118,7 +119,7 @@ export const loadingSpinner = tv({
   defaultVariants: {
     size: "md",
   },
-})
+});
 
 // モーダルのバリアント
 export const modal = tv({
@@ -127,9 +128,9 @@ export const modal = tv({
     content: "fixed inset-0 flex items-center justify-center p-4",
     dialog: "bg-white rounded-lg shadow-xl max-w-md w-full p-6",
   },
-})
+});
 
 // リンクのバリアント
 export const link = tv({
   base: "text-blue-600 hover:text-blue-800 underline transition-colors",
-})
+});

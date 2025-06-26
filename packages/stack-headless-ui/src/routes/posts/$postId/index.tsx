@@ -1,4 +1,10 @@
-import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Fragment, useState } from "react";
@@ -55,7 +61,9 @@ function PostDetailPage() {
         </div>
 
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">{post.title}</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            {post.title}
+          </h1>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <span
