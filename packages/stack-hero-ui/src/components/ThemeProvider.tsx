@@ -54,7 +54,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <HeroUIProvider theme={theme}>
+      <HeroUIProvider>
         {children}
       </HeroUIProvider>
     </ThemeContext.Provider>
