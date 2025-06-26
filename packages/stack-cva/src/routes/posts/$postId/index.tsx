@@ -1,6 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { cn } from "../../../lib/utils";
 import {
   button,
   card,
@@ -36,7 +35,7 @@ function PostDetailPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className={cn(loadingSpinner(), "border-blue-600")}></div>
+        <div className={loadingSpinner({ className: "border-blue-600" })}></div>
       </div>
     );
   }
@@ -52,11 +51,11 @@ function PostDetailPage() {
   const post = data.data;
 
   return (
-    <article className={cn(card(), "p-8")}>
+    <article className={card({ className: "p-8" })}>
       <div className="mb-6">
         <Link
           to="/"
-          className={cn(link(), "text-sm text-gray-500 hover:text-gray-700")}
+          className={link({ className: "text-sm text-gray-500 hover:text-gray-700" })}
         >
           ← 一覧に戻る
         </Link>
@@ -152,11 +151,11 @@ function PostDetailPage() {
                   type="button"
                   onClick={handleDelete}
                   disabled={deletePost.isPending}
-                  className={cn(
-                    button({ variant: "danger", size: "sm" }),
-                    "sm:ml-3 sm:w-auto",
-                    deletePost.isPending && "opacity-50"
-                  )}
+                  className={button({
+                    variant: "danger",
+                    size: "sm",
+                    className: `sm:ml-3 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`
+                  })}
                 >
                   {deletePost.isPending ? "削除中..." : "削除"}
                 </button>
@@ -164,11 +163,11 @@ function PostDetailPage() {
                   type="button"
                   onClick={() => setShowDeleteConfirm(false)}
                   disabled={deletePost.isPending}
-                  className={cn(
-                    button({ variant: "secondary", size: "sm" }),
-                    "mt-3 sm:mt-0 sm:w-auto",
-                    deletePost.isPending && "opacity-50"
-                  )}
+                  className={button({
+                    variant: "secondary",
+                    size: "sm",
+                    className: `mt-3 sm:mt-0 sm:w-auto ${deletePost.isPending ? "opacity-50" : ""}`
+                  })}
                 >
                   キャンセル
                 </button>

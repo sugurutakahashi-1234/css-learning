@@ -1,14 +1,13 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { cn } from "../lib/utils";
 import { button, container, header } from "../styles/variants";
 
 const RootComponent = () => (
   <>
     <div className="min-h-screen bg-gray-50">
       {/* ヘッダー */}
-      <header className={cn(header(), "bg-gray-800")}>
-        <div className={cn(container({ size: "sm" }), "sm:px-6 lg:px-8")}>
+      <header className={header({ className: "bg-teal-700" })}>
+        <div className={container({ size: "sm", className: "sm:px-6 lg:px-8" })}>
           <div className="flex h-16 items-center justify-between">
             <Link
               to="/"
@@ -19,10 +18,11 @@ const RootComponent = () => (
             <nav>
               <Link
                 to="/posts/new"
-                className={cn(
-                  button({ variant: "secondary", size: "sm" }),
-                  "bg-gray-100 text-gray-800 hover:bg-gray-200",
-                )}
+                className={button({
+                  variant: "secondary",
+                  size: "sm",
+                  className: "bg-gray-100 text-gray-800 hover:bg-gray-200",
+                })}
               >
                 新規投稿
               </Link>
@@ -32,7 +32,7 @@ const RootComponent = () => (
       </header>
 
       {/* メインコンテンツ */}
-      <main className={cn(container({ size: "sm" }), "sm:px-6 lg:px-8 py-8")}>
+      <main className={container({ size: "sm", className: "sm:px-6 lg:px-8 py-8" })}>
         <Outlet />
       </main>
     </div>

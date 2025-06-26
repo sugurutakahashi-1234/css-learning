@@ -1,12 +1,24 @@
-import { useState } from 'react'
-import { Button, Card, Container, TextField, Select, Switch, Badge, Alert, Progress, Tag, Divider } from '@repo/hero-ui'
-import { AppLayout } from '../components/app-layout'
+import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  Container,
+  Divider,
+  Progress,
+  Select,
+  Switch,
+  Tag,
+  TextField,
+} from "@repo/hero-ui";
+import { useState } from "react";
+import { AppLayout } from "../components/app-layout";
 
 export function ThemeTestPage() {
-  const [switchValue, setSwitchValue] = useState(false)
-  const [textValue, setTextValue] = useState('')
-  const [selectValue, setSelectValue] = useState('option1')
-  const [progress, setProgress] = useState(30)
+  const [switchValue, setSwitchValue] = useState(false);
+  const [textValue, setTextValue] = useState("");
+  const [selectValue, setSelectValue] = useState("option1");
+  const [progress, setProgress] = useState(30);
 
   return (
     <AppLayout>
@@ -35,7 +47,9 @@ export function ThemeTestPage() {
                 <Button variant="danger">危険</Button>
                 <Button variant="warning">警告</Button>
                 <Button variant="info">情報</Button>
-                <Button variant="primary" disabled>無効</Button>
+                <Button variant="primary" disabled>
+                  無効
+                </Button>
               </div>
             </div>
           </Card>
@@ -46,7 +60,9 @@ export function ThemeTestPage() {
               <h2 className="text-2xl font-semibold mb-4">フォーム要素</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">テキストフィールド</label>
+                  <label className="block text-sm font-medium mb-2">
+                    テキストフィールド
+                  </label>
                   <TextField
                     value={textValue}
                     onChange={(e) => setTextValue(e.target.value)}
@@ -54,7 +70,9 @@ export function ThemeTestPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">セレクト</label>
+                  <label className="block text-sm font-medium mb-2">
+                    セレクト
+                  </label>
                   <Select
                     value={selectValue}
                     onChange={(e) => setSelectValue(e.target.value)}
@@ -66,12 +84,9 @@ export function ThemeTestPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <label className="text-sm font-medium">スイッチ</label>
-                  <Switch
-                    checked={switchValue}
-                    onChange={setSwitchValue}
-                  />
+                  <Switch checked={switchValue} onChange={setSwitchValue} />
                   <span className="text-sm text-gray-500">
-                    {switchValue ? 'オン' : 'オフ'}
+                    {switchValue ? "オン" : "オフ"}
                   </span>
                 </div>
               </div>
@@ -155,14 +170,14 @@ export function ThemeTestPage() {
               <h2 className="text-2xl font-semibold mb-4">カラーパレット</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { name: 'Primary', class: 'bg-primary-500' },
-                  { name: 'Secondary', class: 'bg-gray-500' },
-                  { name: 'Success', class: 'bg-green-500' },
-                  { name: 'Danger', class: 'bg-red-500' },
-                  { name: 'Warning', class: 'bg-yellow-500' },
-                  { name: 'Info', class: 'bg-blue-500' },
-                  { name: 'Light', class: 'bg-gray-100' },
-                  { name: 'Dark', class: 'bg-gray-900' },
+                  { name: "Primary", class: "bg-primary-500" },
+                  { name: "Secondary", class: "bg-gray-500" },
+                  { name: "Success", class: "bg-green-500" },
+                  { name: "Danger", class: "bg-red-500" },
+                  { name: "Warning", class: "bg-yellow-500" },
+                  { name: "Info", class: "bg-blue-500" },
+                  { name: "Light", class: "bg-gray-100" },
+                  { name: "Dark", class: "bg-gray-900" },
                 ].map((color) => (
                   <div key={color.name} className="text-center">
                     <div className={`h-20 rounded-lg ${color.class}`} />
@@ -192,5 +207,5 @@ export function ThemeTestPage() {
         </div>
       </Container>
     </AppLayout>
-  )
+  );
 }

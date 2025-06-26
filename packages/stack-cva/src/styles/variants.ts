@@ -108,7 +108,7 @@ export const container = cva("mx-auto px-4", {
 export type ContainerVariants = VariantProps<typeof container>;
 
 // ヘッダーのバリアント
-export const header = cva("bg-white shadow-sm");
+export const header = cva("shadow-sm");
 
 // ページタイトルのバリアント
 export const pageTitle = cva("text-3xl font-bold text-gray-900");
