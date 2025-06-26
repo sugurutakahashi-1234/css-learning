@@ -20,7 +20,7 @@
     "@tanstack/react-router": "^1.121.34",
     "@tanstack/router-vite-plugin": "^1.121.37",
     "class-variance-authority": "^0.7.1",
-    "framer-motion": "^11.18.2",
+    "framer-motion": "^12.19.1",
     "openapi-fetch": "^0.14.0",
     "openapi-react-query": "^0.5.0",
     "react": "^19.1.0",
