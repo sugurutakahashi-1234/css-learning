@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PostCard } from "../components/PostCard";
+import { cn } from "../lib/utils";
 import { button, loadingSpinner, pageTitle } from "../styles/variants";
 import { usePosts } from "../user-posts";
 
@@ -13,7 +14,7 @@ function HomePage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className={loadingSpinner({ className: "border-blue-600" })}></div>
+        <div className={cn(loadingSpinner(), "border-blue-600")}></div>
       </div>
     );
   }
@@ -34,7 +35,7 @@ function HomePage() {
         <p className="text-gray-500">投稿がありません</p>
         <Link
           to="/posts/new"
-          className={button({ className: "mt-4 inline-block" })}
+          className={cn(button(), "mt-4 inline-block")}
         >
           最初の投稿を作成
         </Link>
@@ -44,7 +45,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1 className={pageTitle({ className: "mb-6" })}>投稿一覧</h1>
+      <h1 className={cn(pageTitle(), "mb-6")}>投稿一覧</h1>
       <div className="grid gap-4 md:grid-cols-2">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />

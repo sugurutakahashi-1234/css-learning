@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { PostForm } from "../../../components/PostForm";
 import type { components } from "../../../generated/api";
+import { cn } from "../../../lib/utils";
 import { card, loadingSpinner, pageTitle } from "../../../styles/variants";
 import { usePost, useUpdatePost } from "../../../user-posts";
 
@@ -36,7 +37,7 @@ function PostEditPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className={loadingSpinner({ className: "border-blue-600" })}></div>
+        <div className={cn(loadingSpinner(), "border-blue-600")}></div>
       </div>
     );
   }
@@ -50,8 +51,8 @@ function PostEditPage() {
   }
 
   return (
-    <div className={card({ className: "p-8" })}>
-      <h1 className={pageTitle({ className: "mb-6" })}>投稿編集</h1>
+    <div className={cn(card(), "p-8")}>
+      <h1 className={cn(pageTitle(), "mb-6")}>投稿編集</h1>
       <PostForm
         initialData={data.data}
         onSubmit={handleSubmit}

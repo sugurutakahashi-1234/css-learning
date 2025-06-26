@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { components } from "../generated/api";
 import { card, statusBadge } from "../styles/variants";
+import { cn } from "../lib/utils";
 
 interface PostCardProps {
   post: components["schemas"]["Post"];
@@ -8,7 +9,7 @@ interface PostCardProps {
 
 export function PostCard({ post }: PostCardProps) {
   return (
-    <article className={card({ hover: true, className: "p-6" })}>
+    <article className={cn(card({ hover: true }), "p-6")}>
       <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
         <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
           {post.title}

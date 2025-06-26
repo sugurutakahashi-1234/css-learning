@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
 import type { components } from "../generated/api";
 import { button, checkbox, input, label, textarea } from "../styles/variants";
+import { cn } from "../lib/utils";
 
 interface PostFormProps {
   initialData?: components["schemas"]["Post"];
@@ -43,7 +44,7 @@ export function PostForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor={titleId} className={label({ className: "mb-2" })}>
+        <label htmlFor={titleId} className={cn(label(), "mb-2")}>
           タイトル
         </label>
         <input
@@ -58,7 +59,7 @@ export function PostForm({
       </div>
 
       <div>
-        <label htmlFor={contentId} className={label({ className: "mb-2" })}>
+        <label htmlFor={contentId} className={cn(label(), "mb-2")}>
           本文
         </label>
         <textarea
@@ -92,9 +93,10 @@ export function PostForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className={button({
-            className: isSubmitting ? "opacity-50 cursor-not-allowed" : "",
-          })}
+          className={cn(
+            button(),
+            isSubmitting && "opacity-50 cursor-not-allowed"
+          )}
         >
           {isSubmitting ? "保存中..." : initialData ? "更新" : "作成"}
         </button>
@@ -102,10 +104,10 @@ export function PostForm({
           type="button"
           onClick={() => window.history.back()}
           disabled={isSubmitting}
-          className={button({
-            variant: "secondary",
-            className: isSubmitting ? "opacity-50" : "",
-          })}
+          className={cn(
+            button({ variant: "secondary" }),
+            isSubmitting && "opacity-50"
+          )}
         >
           キャンセル
         </button>

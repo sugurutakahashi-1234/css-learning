@@ -32,8 +32,8 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "tailwindCSS.classFunctions": ["cva", "cx", "cn", "twMerge"],
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
-  "tailwindCSS.classFunctions": ["cva", "cx", "clsx", "twMerge"]
+  ]
 }

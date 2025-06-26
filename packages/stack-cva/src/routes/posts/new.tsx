@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { PostForm } from "../../components/PostForm";
 import type { components } from "../../generated/api";
+import { cn } from "../../lib/utils";
 import { card, pageTitle } from "../../styles/variants";
 import { useCreatePost } from "../../user-posts";
 
@@ -22,8 +23,8 @@ function PostCreatePage() {
   };
 
   return (
-    <div className={card({ className: "p-8" })}>
-      <h1 className={pageTitle({ className: "mb-6" })}>新規投稿作成</h1>
+    <div className={cn(card(), "p-8")}>
+      <h1 className={cn(pageTitle(), "mb-6")}>新規投稿作成</h1>
       <PostForm onSubmit={handleSubmit} isSubmitting={createPost.isPending} />
     </div>
   );
