@@ -9,9 +9,9 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
   return (
     <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
-      <Card 
-        isPressable 
-        isHoverable 
+      <Card
+        isPressable
+        isHoverable
         className="w-full shadow-md hover:shadow-xl transition-shadow"
       >
         <CardHeader className="pb-0">

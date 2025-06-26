@@ -97,8 +97,22 @@
       "WebFetch(domain:react-router-docs-ja.techtalk.jp)",
       "WebFetch(domain:ui.shadcn.com)",
       "WebFetch(domain:www.heroui.com)",
-      "WebFetch(domain:zenn.dev)"
+      "WebFetch(domain:zenn.dev)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_click"
     ],
     "deny": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
   }
 }
