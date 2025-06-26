@@ -15,7 +15,7 @@
     "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "@heroui/react": "2.7.11",
+    "@heroui/react": "2.8.0-beta.10",
     "@tanstack/react-query": "^5.81.2",
     "@tanstack/react-router": "^1.121.34",
     "@tanstack/router-vite-plugin": "^1.121.34",
