@@ -14,7 +14,7 @@ export const Route = createRootRoute({
               to="/"
               className="text-xl font-bold text-zinc-900 hover:text-zinc-700 transition-colors dark:text-zinc-50 dark:hover:text-zinc-300"
             >
-              ブログ管理システム
+              ブログ管理システム (shadcn/ui)
             </Link>
             <nav>
               <Button asChild size="sm">

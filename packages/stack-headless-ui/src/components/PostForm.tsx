@@ -1,3 +1,4 @@
+import { Switch } from "@headlessui/react";
 import { useEffect, useId, useState } from "react";
 import type { components } from "../generated/api";
 
@@ -80,17 +81,28 @@ export function PostForm({
       </div>
 
       <div>
-        <label className="flex items-center">
-          <input
-            type="checkbox"
-            checked={formData.published}
-            onChange={(e) =>
-              setFormData({ ...formData, published: e.target.checked })
-            }
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-          />
-          <span className="ml-2 text-sm text-gray-700">公開する</span>
-        </label>
+        <Switch.Group>
+          <div className="flex items-center">
+            <Switch
+              checked={formData.published}
+              onChange={(checked) =>
+                setFormData({ ...formData, published: checked })
+              }
+              className={`${
+                formData.published ? "bg-blue-600" : "bg-gray-200"
+              } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+            >
+              <span
+                className={`${
+                  formData.published ? "translate-x-6" : "translate-x-1"
+                } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+              />
+            </Switch>
+            <Switch.Label className="ml-3 text-sm text-gray-700 cursor-pointer">
+              公開する
+            </Switch.Label>
+          </div>
+        </Switch.Group>
       </div>
 
       <div className="flex gap-4">
