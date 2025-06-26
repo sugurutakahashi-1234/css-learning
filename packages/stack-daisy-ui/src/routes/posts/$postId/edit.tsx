@@ -35,22 +35,22 @@ function PostEditPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className="animate-spin h-8 w-8 border-4 border-blue-600 rounded-full border-t-transparent"></div>
+        <span className="loading loading-spinner loading-lg text-primary"></span>
       </div>
     );
   }
 
   if (error || !data) {
     return (
-      <div className="rounded-md bg-red-50 p-4">
-        <p className="text-sm text-red-800">投稿が見つかりません</p>
+      <div className="alert alert-error">
+        <span>投稿が見つかりません</span>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">投稿編集</h1>
+    <div className="card bg-base-100 shadow-sm p-8">
+      <h1 className="text-2xl font-bold mb-6">投稿編集</h1>
       <PostForm
         initialData={data.data}
         onSubmit={handleSubmit}

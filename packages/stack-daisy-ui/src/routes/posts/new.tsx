@@ -21,8 +21,8 @@ function PostCreatePage() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">新規投稿作成</h1>
+    <div className="card bg-base-100 shadow-sm p-8">
+      <h1 className="text-2xl font-bold mb-6">新規投稿作成</h1>
       <PostForm onSubmit={handleSubmit} isSubmitting={createPost.isPending} />
     </div>
   );

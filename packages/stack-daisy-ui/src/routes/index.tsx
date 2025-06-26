@@ -12,17 +12,15 @@ function HomePage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className="animate-spin h-8 w-8 border-4 border-blue-600 rounded-full border-t-transparent"></div>
+        <span className="loading loading-spinner loading-lg text-primary"></span>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="rounded-md bg-red-50 p-4">
-        <p className="text-sm text-red-800">
-          エラーが発生しました: {error.message}
-        </p>
+      <div className="alert alert-error">
+        <span>エラーが発生しました: {error.message}</span>
       </div>
     );
   }
@@ -30,10 +28,10 @@ function HomePage() {
   if (!posts || posts.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500">投稿がありません</p>
+        <p className="text-base-content/60">投稿がありません</p>
         <Link
           to="/posts/new"
-          className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+          className="mt-4 btn btn-primary"
         >
           最初の投稿を作成
         </Link>
@@ -43,7 +41,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">投稿一覧</h1>
+      <h1 className="text-2xl font-bold mb-6">投稿一覧</h1>
       <div className="grid gap-4 md:grid-cols-2">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />

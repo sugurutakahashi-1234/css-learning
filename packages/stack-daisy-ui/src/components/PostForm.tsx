@@ -44,7 +44,7 @@ export function PostForm({
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="form-control">
         <label htmlFor={titleId} className="label">
-          <span className="label-text">タイトル</span>
+          <span className="label-text text-sm font-medium">タイトル</span>
         </label>
         <input
           type="text"
@@ -52,14 +52,14 @@ export function PostForm({
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           required
-          className="input input-bordered w-full"
+          className="input input-bordered w-full focus:input-primary"
           placeholder="記事のタイトルを入力"
         />
       </div>
 
       <div className="form-control">
         <label htmlFor={contentId} className="label">
-          <span className="label-text">本文</span>
+          <span className="label-text text-sm font-medium">本文</span>
         </label>
         <textarea
           id={contentId}
@@ -69,13 +69,13 @@ export function PostForm({
           }
           required
           rows={10}
-          className="textarea textarea-bordered w-full"
+          className="textarea textarea-bordered w-full focus:textarea-primary"
           placeholder="記事の内容を入力"
         />
       </div>
 
       <div className="form-control">
-        <label htmlFor={publishedId} className="label cursor-pointer justify-start gap-3">
+        <label className="label cursor-pointer justify-start gap-2">
           <input
             type="checkbox"
             id={publishedId}
@@ -83,9 +83,9 @@ export function PostForm({
             onChange={(e) =>
               setFormData({ ...formData, published: e.target.checked })
             }
-            className="checkbox checkbox-primary"
+            className="checkbox checkbox-sm checkbox-primary"
           />
-          <span className="label-text">公開する</span>
+          <span className="label-text text-sm">公開する</span>
         </label>
       </div>
 
@@ -93,16 +93,18 @@ export function PostForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn btn-primary"
+          className="btn btn-primary btn-sm px-4"
         >
-          {isSubmitting && <span className="loading loading-spinner"></span>}
+          {isSubmitting && (
+            <span className="loading loading-spinner loading-xs"></span>
+          )}
           {isSubmitting ? "保存中..." : initialData ? "更新" : "作成"}
         </button>
         <button
           type="button"
           onClick={() => window.history.back()}
           disabled={isSubmitting}
-          className="btn btn-ghost"
+          className="btn btn-outline btn-sm px-4"
         >
           キャンセル
         </button>
