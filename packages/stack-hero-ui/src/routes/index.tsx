@@ -46,7 +46,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">投稿一覧</h1>
+      <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">投稿一覧</h1>
       <div className="grid gap-4 md:grid-cols-2">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />

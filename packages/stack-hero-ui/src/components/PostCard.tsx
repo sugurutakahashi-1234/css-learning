@@ -9,20 +9,25 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
   return (
     <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
-      <Card isPressable isHoverable className="w-full">
-        <CardHeader className="flex gap-3">
-          <div className="flex flex-col">
-            <p className="text-md font-semibold">{post.title}</p>
+      <Card 
+        isPressable 
+        isHoverable 
+        className="w-full shadow-md hover:shadow-xl transition-shadow"
+      >
+        <CardHeader className="pb-0">
+          <div className="flex flex-col gap-1">
+            <p className="text-lg font-bold">{post.title}</p>
           </div>
         </CardHeader>
-        <CardBody>
-          <p className="text-default-500 line-clamp-3">{post.content}</p>
+        <CardBody className="py-2">
+          <p className="text-default-600 line-clamp-3">{post.content}</p>
         </CardBody>
-        <CardFooter className="justify-between">
+        <CardFooter className="justify-between pt-2">
           <Chip
-            color={post.published ? "success" : "default"}
-            variant="flat"
+            color={post.published ? "success" : "warning"}
+            variant="dot"
             size="sm"
+            className="font-medium"
           >
             {post.published ? "公開" : "下書き"}
           </Chip>

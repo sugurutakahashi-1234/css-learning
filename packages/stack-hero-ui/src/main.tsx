@@ -14,7 +14,35 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <HeroUIProvider>
+    <HeroUIProvider
+      defaultTheme="light"
+      themes={{
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: "#006FEE",
+              foreground: "#FFFFFF",
+            },
+            secondary: {
+              DEFAULT: "#9353D3",
+              foreground: "#FFFFFF",
+            },
+            success: {
+              DEFAULT: "#17C964",
+              foreground: "#FFFFFF",
+            },
+            warning: {
+              DEFAULT: "#F5A524",
+              foreground: "#FFFFFF",
+            },
+            danger: {
+              DEFAULT: "#F31260",
+              foreground: "#FFFFFF",
+            },
+          },
+        },
+      }}
+    >
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>

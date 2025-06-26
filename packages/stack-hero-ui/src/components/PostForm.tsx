@@ -47,8 +47,13 @@ export function PostForm({
         value={formData.title}
         onValueChange={(value) => setFormData({ ...formData, title: value })}
         isRequired
-        variant="bordered"
+        variant="faded"
         size="lg"
+        labelPlacement="outside"
+        classNames={{
+          label: "text-default-700 font-medium",
+          input: "font-medium",
+        }}
       />
 
       <Textarea
@@ -57,8 +62,13 @@ export function PostForm({
         value={formData.content}
         onValueChange={(value) => setFormData({ ...formData, content: value })}
         isRequired
-        variant="bordered"
+        variant="faded"
         minRows={10}
+        labelPlacement="outside"
+        classNames={{
+          label: "text-default-700 font-medium",
+          input: "font-medium",
+        }}
       />
 
       <Checkbox
@@ -75,6 +85,8 @@ export function PostForm({
         <Button
           type="submit"
           color="primary"
+          variant="shadow"
+          size="lg"
           isLoading={isSubmitting}
           isDisabled={isSubmitting}
         >
@@ -82,7 +94,8 @@ export function PostForm({
         </Button>
         <Button
           type="button"
-          variant="bordered"
+          variant="light"
+          size="lg"
           onPress={() => window.history.back()}
           isDisabled={isSubmitting}
         >

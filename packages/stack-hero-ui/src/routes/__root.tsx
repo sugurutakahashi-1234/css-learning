@@ -7,15 +7,20 @@ export const Route = createRootRoute({
     <>
       <div className="min-h-screen bg-background">
         {/* ヘッダー */}
-        <Navbar isBordered maxWidth="xl">
+        <Navbar isBordered maxWidth="xl" className="bg-gradient-to-r from-primary-50 to-secondary-50">
           <NavbarBrand>
-            <Link to="/" className="font-bold text-inherit">
+            <Link to="/" className="font-bold text-inherit text-xl">
               ブログ管理システム (HeroUI)
             </Link>
           </NavbarBrand>
           <NavbarContent justify="end">
             <NavbarItem>
-              <Button as={Link} to="/posts/new" color="primary" variant="flat">
+              <Button as={Link} to="/theme-test" color="secondary" variant="flat">
+                テーマテスト
+              </Button>
+            </NavbarItem>
+            <NavbarItem>
+              <Button as={Link} to="/posts/new" color="primary" variant="shadow" size="lg">
                 新規投稿
               </Button>
             </NavbarItem>
