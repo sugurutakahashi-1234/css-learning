@@ -34,5 +34,6 @@
   },
   "tailwindCSS.experimental.classRegex": [
     ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  "tailwindCSS.classFunctions": ["cva", "cx", "clsx", "twMerge"]
 }

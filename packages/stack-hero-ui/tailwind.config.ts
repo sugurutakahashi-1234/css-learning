@@ -88,6 +88,53 @@ const config: Config = {
             },
           },
         },
+        dark: {
+          layout: {
+            hoverOpacity: 0.9,
+            boxShadow: {
+              small:
+                "0px 0px 5px 0px rgb(0 0 0 / 0.2), 0px 2px 10px 0px rgb(0 0 0 / 0.5)",
+              medium:
+                "0px 0px 15px 0px rgb(0 0 0 / 0.3), 0px 2px 30px 0px rgb(0 0 0 / 0.5)",
+              large:
+                "0px 0px 30px 0px rgb(0 0 0 / 0.4), 0px 30px 60px 0px rgb(0 0 0 / 0.5)",
+            },
+          },
+          colors: {
+            background: "#000000",
+            foreground: "#ECEDEE",
+            primary: {
+              50: "#001731",
+              100: "#002E62",
+              200: "#004493",
+              300: "#005BC4",
+              400: "#006FEE",
+              500: "#3996FB",
+              600: "#6BB0FC",
+              700: "#9CCAFD",
+              800: "#CEE4FE",
+              900: "#E6F1FE",
+              DEFAULT: "#006FEE",
+              foreground: "#FFFFFF",
+            },
+            secondary: {
+              DEFAULT: "#BB6BF5",
+              foreground: "#FFFFFF",
+            },
+            success: {
+              DEFAULT: "#41F79F",
+              foreground: "#000000",
+            },
+            warning: {
+              DEFAULT: "#F5A524",
+              foreground: "#000000",
+            },
+            danger: {
+              DEFAULT: "#F54180",
+              foreground: "#FFFFFF",
+            },
+          },
+        },
       },
     }),
   ],

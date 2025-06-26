@@ -12,11 +12,13 @@ export function PostCard({ post }: PostCardProps) {
       <Card
         isPressable
         isHoverable
-        className="w-full shadow-md hover:shadow-xl transition-shadow"
+        className="w-full shadow-md hover:shadow-xl hover-lift transition-smooth group"
       >
         <CardHeader className="pb-0">
           <div className="flex flex-col gap-1">
-            <p className="text-lg font-bold">{post.title}</p>
+            <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
+              {post.title}
+            </h3>
           </div>
         </CardHeader>
         <CardBody className="py-2">

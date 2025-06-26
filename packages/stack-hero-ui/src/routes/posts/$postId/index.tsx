@@ -1,5 +1,6 @@
 import { Button, Card, CardBody, CardHeader, Chip, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner, useDisclosure } from "@heroui/react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useToast } from "../../../hooks/useToast";
 import { useDeletePost, usePost } from "../../../user-posts";
 
 export const Route = createFileRoute("/posts/$postId/")({
@@ -12,13 +13,16 @@ function PostDetailPage() {
   const { data, isLoading, error } = usePost(postId);
   const deletePost = useDeletePost();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { showToast } = useToast();
 
   const handleDelete = async () => {
     try {
       await deletePost.mutateAsync({ params: { path: { id: postId } } });
+      showToast("投稿を削除しました", "success");
       navigate({ to: "/" });
     } catch (error) {
       console.error("削除エラー:", error);
+      showToast("投稿の削除に失敗しました", "error");
     }
   };
 

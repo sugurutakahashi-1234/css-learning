@@ -1,8 +1,9 @@
-import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { ToastProvider } from "./hooks/useToast";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -14,10 +15,12 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <HeroUIProvider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </HeroUIProvider>
+    <ThemeProvider>
+      <ToastProvider>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </ToastProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 );
