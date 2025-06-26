@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState, useId } from "react";
+import { useId, useState } from "react";
 import { useDeletePost, usePost } from "../../../user-posts";
 
 export const Route = createFileRoute("/posts/$postId/")({
@@ -41,6 +41,7 @@ function PostDetailPage() {
           viewBox="0 0 24 24"
           aria-label="エラー"
         >
+          <title>エラー</title>
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -143,6 +144,7 @@ function PostDetailPage() {
               stroke="currentColor"
               aria-label="警告"
             >
+              <title>警告</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -178,6 +180,7 @@ function PostDetailPage() {
           </div>
         </div>
         <button
+          type="button"
           className="modal-backdrop"
           onClick={() => setShowDeleteConfirm(false)}
         >
