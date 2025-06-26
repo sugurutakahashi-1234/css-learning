@@ -1,3 +1,4 @@
+import { Button, Checkbox, Input, Textarea } from "@heroui/react";
 import { useEffect, useId, useState } from "react";
 import type { components } from "../generated/api";
 
@@ -12,8 +13,7 @@ export function PostForm({
   onSubmit,
   isSubmitting,
 }: PostFormProps) {
-  const titleId = useId();
-  const contentId = useId();
+  const publishedId = useId();
   const [formData, setFormData] = useState<components["schemas"]["CreatePost"]>(
     {
       title: "",
@@ -41,74 +41,53 @@ export function PostForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label
-          htmlFor={titleId}
-          className="block text-sm font-medium text-gray-700 mb-2"
-        >
-          タイトル
-        </label>
-        <input
-          type="text"
-          id={titleId}
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          required
-          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 border"
-          placeholder="記事のタイトルを入力"
-        />
-      </div>
+      <Input
+        label="タイトル"
+        placeholder="記事のタイトルを入力"
+        value={formData.title}
+        onValueChange={(value) => setFormData({ ...formData, title: value })}
+        isRequired
+        variant="bordered"
+        size="lg"
+      />
 
-      <div>
-        <label
-          htmlFor={contentId}
-          className="block text-sm font-medium text-gray-700 mb-2"
-        >
-          本文
-        </label>
-        <textarea
-          id={contentId}
-          value={formData.content}
-          onChange={(e) =>
-            setFormData({ ...formData, content: e.target.value })
-          }
-          required
-          rows={10}
-          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 border"
-          placeholder="記事の内容を入力"
-        />
-      </div>
+      <Textarea
+        label="本文"
+        placeholder="記事の内容を入力"
+        value={formData.content}
+        onValueChange={(value) => setFormData({ ...formData, content: value })}
+        isRequired
+        variant="bordered"
+        minRows={10}
+      />
 
-      <div>
-        <label className="flex items-center">
-          <input
-            type="checkbox"
-            checked={formData.published}
-            onChange={(e) =>
-              setFormData({ ...formData, published: e.target.checked })
-            }
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-          />
-          <span className="ml-2 text-sm text-gray-700">公開する</span>
-        </label>
-      </div>
+      <Checkbox
+        id={publishedId}
+        isSelected={formData.published}
+        onValueChange={(isSelected) =>
+          setFormData({ ...formData, published: isSelected })
+        }
+      >
+        公開する
+      </Checkbox>
 
       <div className="flex gap-4">
-        <button
+        <Button
           type="submit"
-          disabled={isSubmitting}
-          className="inline-flex justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          color="primary"
+          isLoading={isSubmitting}
+          isDisabled={isSubmitting}
         >
-          {isSubmitting ? "保存中..." : initialData ? "更新" : "作成"}
-        </button>
-        <button
+          {initialData ? "更新" : "作成"}
+        </Button>
+        <Button
           type="button"
-          onClick={() => window.history.back()}
-          disabled={isSubmitting}
-          className="inline-flex justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+          variant="bordered"
+          onPress={() => window.history.back()}
+          isDisabled={isSubmitting}
         >
           キャンセル
-        </button>
+        </Button>
       </div>
     </form>
   );

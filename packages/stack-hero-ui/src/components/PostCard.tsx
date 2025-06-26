@@ -1,3 +1,4 @@
+import { Card, CardBody, CardFooter, CardHeader, Chip } from "@heroui/react";
 import { Link } from "@tanstack/react-router";
 import type { components } from "../generated/api";
 
@@ -7,27 +8,29 @@ interface PostCardProps {
 
 export function PostCard({ post }: PostCardProps) {
   return (
-    <article className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
-      <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
-        <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
-          {post.title}
-        </h2>
-        <p className="text-gray-600 line-clamp-3 mb-4">{post.content}</p>
-        <div className="flex items-center justify-between text-sm text-gray-500">
-          <span
-            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-              post.published
-                ? "bg-green-100 text-green-800"
-                : "bg-gray-100 text-gray-800"
-            }`}
+    <Link to="/posts/$postId" params={{ postId: post.id }} className="block">
+      <Card isPressable isHoverable className="w-full">
+        <CardHeader className="flex gap-3">
+          <div className="flex flex-col">
+            <p className="text-md font-semibold">{post.title}</p>
+          </div>
+        </CardHeader>
+        <CardBody>
+          <p className="text-default-500 line-clamp-3">{post.content}</p>
+        </CardBody>
+        <CardFooter className="justify-between">
+          <Chip
+            color={post.published ? "success" : "default"}
+            variant="flat"
+            size="sm"
           >
             {post.published ? "公開" : "下書き"}
-          </span>
-          <time dateTime={post.createdAt}>
+          </Chip>
+          <p className="text-default-400 text-small">
             {new Date(post.createdAt).toLocaleDateString("ja-JP")}
-          </time>
-        </div>
-      </Link>
-    </article>
+          </p>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 }

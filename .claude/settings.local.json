@@ -95,7 +95,9 @@
       "WebFetch(domain:tanstack.com)",
       "WebFetch(domain:reactrouter.com)",
       "WebFetch(domain:react-router-docs-ja.techtalk.jp)",
-      "WebFetch(domain:ui.shadcn.com)"
+      "WebFetch(domain:ui.shadcn.com)",
+      "WebFetch(domain:www.heroui.com)",
+      "WebFetch(domain:zenn.dev)"
     ],
     "deny": []
   }
