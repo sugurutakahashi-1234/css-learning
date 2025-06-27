@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.81.2",
-    "@tanstack/react-router": "^1.121.34",
-    "@tanstack/router-vite-plugin": "^1.121.37",
+    "@tanstack/react-router": "^1.121.40",
+    "@tanstack/router-vite-plugin": "^1.121.40",
     "openapi-fetch": "^0.14.0",
     "openapi-react-query": "^0.5.0",
     "react": "^19.1.0",
@@ -25,15 +25,15 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
-    "@tanstack/react-router-devtools": "^1.121.34",
-    "@tanstack/router-plugin": "^1.121.37",
+    "@tanstack/react-router-devtools": "^1.121.40",
+    "@tanstack/router-plugin": "^1.121.40",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react-oxc": "^0.2.3",
+    "@vitejs/plugin-react": "^4.6.0",
     "openapi-typescript": "^7.8.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "vite": "npm:rolldown-vite@^7.0.2",
+    "vite": "^7.0.0",
     "vitest": "^3.2.4"
   }
 }
